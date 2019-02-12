@@ -37,5 +37,16 @@ public class AccountMapRepository implements AccountRepository{
 		accountMap.put(id, updatedAccount);
 		return "Account updated.";
 	}
-
+	public String nameCount(String name)
+	{
+		int count = 0;
+		for (long i = 1; i<=accountMap.size(); i++)
+		{
+			if(accountMap.get(i).getFirstName().contains(name))
+			{
+				count++;
+			}
+		}
+		return "There are " + count + " accounts with that name.";
+	}
 }

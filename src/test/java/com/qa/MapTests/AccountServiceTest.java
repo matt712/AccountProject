@@ -85,5 +85,29 @@ public class AccountServiceTest {
 		assertEquals(MOCK_OBJECT, testString);
 		//test currently broken, not sure why
 	}
+	@Test
+	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
+		repo.createAccount(MOCK_OBJECT);
+		repo.createAccount(MOCK_OBJECT2);	
+		String reply = "There are 0 accounts with that name.";
+		assertEquals(reply, repo.nameCount("David"));
+	}
+	
+	@Test
+	public void getCountForFirstNamesInAccountWhenOne() {
+		repo.createAccount(MOCK_OBJECT);
+		repo.createAccount(MOCK_OBJECT2);	
+		String reply = "There are 1 accounts with that name.";
+		assertEquals(reply, repo.nameCount("Bert"));
+	}
 
+	@Test
+	public void getCountForFirstNamesInAccountWhenTwo() {
+		repo.createAccount(MOCK_OBJECT);
+		repo.createAccount(MOCK_OBJECT2);	
+		repo.createAccount(MOCK_OBJECT3);
+		String reply = "There are 2 accounts with that name.";
+		assertTrue(MOCK_OBJECT2.contains("Bob"));
+		assertEquals(reply, repo.nameCount("Bob"));
+	}
 }
