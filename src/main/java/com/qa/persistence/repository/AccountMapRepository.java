@@ -1,5 +1,6 @@
 package com.qa.persistence.repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import com.qa.util.*;
@@ -39,14 +40,7 @@ public class AccountMapRepository implements AccountRepository{
 	}
 	public String nameCount(String name)
 	{
-		int count = 0;
-		for (long i = 1; i<=accountMap.size(); i++)
-		{
-			if(accountMap.get(i).getFirstName().contains(name))
-			{
-				count++;
-			}
-		}
+		long count =  accountMap.values().stream().filter(n -> n.getFirstName().contains(name)).count();
 		return "There are " + count + " accounts with that name.";
 	}
 }
