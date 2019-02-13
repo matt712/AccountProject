@@ -32,7 +32,7 @@ public class AccountDBRepository implements AccountRepository{
 	public String createAccount(String account) {
 		Account anAccount = util.getObjectForJSON(account, Account.class);
 		em.persist(account);
-		return "Account created";
+		return "{\"message\": \"Account created\"}";
 	}
 	@Override
 	public String getAnAccount(Long id)
@@ -48,14 +48,14 @@ public class AccountDBRepository implements AccountRepository{
 		{
 			em.remove(accountDeletable);
 		}
-		return "Account succesfully removed";
+		return "{\"message\": \"Account succesfully removed\"}";
 	}
 	@Override
 	@Transactional
 	public String updateAccount(Long id, String account) {
 		deleteAccount(id);
 		createAccount(account);
-		return "Account updated";
+		return "{\"message\": \"Account updated\\\"}";
 	}
 	public void setEm(EntityManager entManage)
 	{
