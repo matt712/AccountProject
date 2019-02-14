@@ -33,7 +33,7 @@ public class AccountDBRepository implements AccountRepository{
 	@Transactional(REQUIRED)
 	public String createAccount(String account) {
 		Account anAccount = util.getObjectForJSON(account, Account.class);
-		em.persist(account);
+		em.persist(anAccount);
 		return "{\"message\": \"Account created\"}";
 	}
 	@Override
@@ -45,10 +45,9 @@ public class AccountDBRepository implements AccountRepository{
 	@Override
 	@Transactional(REQUIRED)
 	public String deleteAccount(Long id) {
-		Account accountDeletable = util.getObjectForJSON(getAnAccount(id), Account.class);
-		if(em.contains(accountDeletable))
+		if(em.contains(em.find(Account.class, id)))
 		{
-			em.remove(accountDeletable);
+			em.remove(em.find(Account.class, id));
 		}
 		return "{\"message\": \"Account succesfully removed\"}";
 	}

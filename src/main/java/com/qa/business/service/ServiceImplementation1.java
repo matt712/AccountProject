@@ -10,6 +10,7 @@ public class ServiceImplementation1 implements Service
 {
 	@Inject
 	private AccountRepository repo;
+	@Inject
 	private JSONUtil util;
 
 	@Override
@@ -17,7 +18,7 @@ public class ServiceImplementation1 implements Service
 		Account newAccount = util.getObjectForJSON(account, Account.class);
 		if(newAccount.getId() == 9)
 		{
-			return "This account is blocked";
+			return "{\"message\": \"This account is blocked\"}";
 		}
 		else
 		{
