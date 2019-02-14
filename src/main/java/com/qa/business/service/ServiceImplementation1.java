@@ -46,4 +46,9 @@ public class ServiceImplementation1 implements Service
 		return repo.deleteAccount(id);
 	}
 
+	@Override
+	public void setRepo(AccountRepository repoNew) {
+		this.repo = repoNew;
+	}
+
 }

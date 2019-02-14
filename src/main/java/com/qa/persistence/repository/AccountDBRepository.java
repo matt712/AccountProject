@@ -49,7 +49,7 @@ public class AccountDBRepository implements AccountRepository{
 		{
 			em.remove(em.find(Account.class, id));
 		}
-		return "{\"message\": \"Account succesfully removed\"}";
+		return "{\"message\": \"Account successfully removed\"}";
 	}
 	@Override
 	@Transactional
